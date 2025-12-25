@@ -1,72 +1,262 @@
-% book example for classicthesis.sty
-\documentclass[11pt,a5paper,footinclude=true,headinclude=true]{scrbook} % KOMA-Script book
-\usepackage[T1]{fontenc}                
-\usepackage{lipsum}
-\usepackage[linedheaders,parts,pdfspacing]{classicthesis} % ,manychapters
-%\usepackage[osf]{libertine}
-\usepackage{amsthm}
+% ****************************************************************************************************
+% Para o que não há resposta, deve-se continuar perguntando
+% Gustavo Mendes e Silva, M.D.
+% 2025
+% ****************************************************************************************************
+% Template: ClassicThesis
+% ****************************************************************************************************
+\documentclass[11pt,a5paper,footinclude=true,headinclude=true,twoside,openright]{scrbook}
 
+% ****************************************************************************************************
+% Encoding and Fonts
+% ****************************************************************************************************
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
+\usepackage{microtype}
 
+% ****************************************************************************************************
+% ClassicThesis Style
+% ****************************************************************************************************
+\usepackage[linedheaders,parts,pdfspacing,eulerchapternumbers]{classicthesis}
+
+% ****************************************************************************************************
+% Fonts - Palatino-like (classic choice)
+% ****************************************************************************************************
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+
+% ****************************************************************************************************
+% Page Layout
+% ****************************************************************************************************
+\usepackage{geometry}
+\geometry{
+  a5paper,
+  inner=20mm,
+  outer=15mm,
+  top=20mm,
+  bottom=25mm,
+  footskip=12mm
+}
+
+% ****************************************************************************************************
+% Graphics and Colors
+% ****************************************************************************************************
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+% Define custom colors from the HTML cover
+\definecolor{coverblack}{HTML}{1A1A1A}
+\definecolor{coverbg}{HTML}{F2F0EB}
+
+% ****************************************************************************************************
+% Typography Enhancements
+% ****************************************************************************************************
+\usepackage{csquotes}
+\usepackage{setspace}
+\usepackage{enumitem}
+\setlist{noitemsep,topsep=3pt}
+
+% ****************************************************************************************************
+% Quotes and Epigraphs
+% ****************************************************************************************************
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.8\textwidth}
+\setlength{\epigraphrule}{0pt}
+\renewcommand{\epigraphflush}{center}
+\renewcommand{\sourceflush}{center}
+
+% ****************************************************************************************************
+% Chapter Style Enhancement
+% ****************************************************************************************************
+\usepackage{titlesec}
+
+% Section formatting for better hierarchy
+\titleformat{\section}
+  {\relax}
+  {\textsc{\MakeLowercase{\thesection}}}
+  {1em}
+  {\spacedlowsmallcaps}
+
+\titleformat{\subsection}
+  {\relax}
+  {\textsc{\MakeLowercase{\thesubsection}}}
+  {1em}
+  {\normalsize\itshape}
+
+\titleformat{\subsubsection}
+  {\relax}
+  {}
+  {0em}
+  {\small\bfseries}
+
+% Spacing
+\titlespacing*{\section}{0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{2ex plus 1ex minus .2ex}{1ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{1.5ex plus .5ex minus .2ex}{.5ex plus .2ex}
+
+% ****************************************************************************************************
+% Hyperref and PDF metadata
+% ****************************************************************************************************
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=coverblack,
+  pdftitle={Para o que não há resposta, deve-se continuar perguntando},
+  pdfauthor={Gustavo Mendes e Silva, M.D.},
+  pdfsubject={Psiquiatria e Ética},
+  pdfkeywords={psiquiatria, ética, fenomenologia, diagnóstico, psicofarmacologia}
+}
+
+% ****************************************************************************************************
+% Bibliography
+% ****************************************************************************************************
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  natbib=true,
+  maxbibnames=99,
+  maxcitenames=2
+]{biblatex}
+
+% ****************************************************************************************************
+% Custom Commands
+% ****************************************************************************************************
+% For italic emphasis in classical style
+\newcommand{\term}[1]{\textit{#1}}
+\newcommand{\foreign}[1]{\textit{#1}}
+
+% ****************************************************************************************************
+% Document
+% ****************************************************************************************************
 \begin{document}
-%	\pagestyle{scrheadings}
-%	\manualmark
-%	\markboth{\spacedlowsmallcaps{\contentsname}}{\spacedlowsmallcaps{\contentsname}}
-	
-	\tableofcontents 
 
-%	\automark[section]{chapter}
-%	\renewcommand{\chaptermark}[1]{\markboth{\spacedlowsmallcaps{#1}}{\spacedlowsmallcaps{#1}}}
-%	\renewcommand{\sectionmark}[1]{\markright{\thesection\enspace\spacedlowsmallcaps{#1}}}
+% ****************************************************************************************************
+% Front Matter
+% ****************************************************************************************************
+\frontmatter
+\pagestyle{empty}
 
-    % use \cleardoublepage here to avoid problems with pdfbookmark
-    \cleardoublepage\part{Test Part}
-    \chapter{Some Math Testing}
-		\newtheoremstyle{note}% hnamei 
-		{3pt}% hSpace abovei 
-		{3pt}% hSpace belowi note
-		{}% hBody fonti 
-		{}% hIndent amounti1
-		{\itshape}% hTheorem head fonti 
-%		{\spacedlowsmallcaps}%
-		{:}% hPunctuation after theorem headi 
-		{.5em}% hSpace after theorem headi2
-		{}%
-		\theoremstyle{note}
-    \newtheorem{note}{Definition}
-		\begin{note}
-		Here is a new definition
-		\end{note}
+% ****************************************************************************************************
+% Title Page (Cover)
+% ****************************************************************************************************
+\begin{titlepage}
+\begin{tikzpicture}[remember picture, overlay]
+  % Background color block (dark top section)
+  \fill[coverblack] (current page.north west) rectangle
+    ([yshift=-0.58\paperheight]current page.north east);
 
-    
-		\begin{proof}
-		Here is my proof:
-		\[
-		a^2 + b^2 = c^2 \qedhere
-		\]
-		\end{proof}    
-    
-    
-    
-    \chapter{Test Chapter}
-    \lipsum[1]
+  % Vertical accent line
+  \fill[white, opacity=0.3]
+    ([xshift=15mm, yshift=-15mm]current page.north west)
+    rectangle ([xshift=17mm, yshift=-0.58\paperheight]current page.north west);
+  \fill[coverblack, opacity=0.1]
+    ([xshift=15mm, yshift=-0.58\paperheight]current page.north west)
+    rectangle ([xshift=17mm, yshift=15mm]current page.south west);
+\end{tikzpicture}
 
-    \section{A Section}
-    \lipsum[1]
-    
-    \chapter{Test Chapter}
-    \lipsum[1]
-    
-    \section{A Section}
-    \lipsum[1]
+\vspace*{3cm}
 
-%	\include{multiToC}
+\begin{flushleft}
+\hspace{1.5cm}
+\begin{minipage}{0.85\textwidth}
+  {\fontsize{14}{17}\selectfont\color{white}
+   Para o que não há resposta,}\\[3mm]
+  {\fontsize{20}{24}\selectfont\color{coverbg}\itshape
+   deve-se continuar\\perguntando}
+\end{minipage}
+\end{flushleft}
 
-    \appendix
-    \cleardoublepage\part{Appendix}
-    \chapter{Appendix Chapter}
-    \lipsum[1]
-    
-    \section{A Section}
-    \lipsum[1]
+\vfill
+
+\begin{flushleft}
+\hspace{1.5cm}
+\begin{minipage}{0.85\textwidth}
+  {\small\itshape\color{coverblack!70} Sobre Psiquiatria e Ética}\\[8mm]
+  {\small\color{coverblack} Gustavo Mendes e Silva, M.D.}
+  \hfill
+  {\fontsize{24}{28}\selectfont\color{coverblack!8} 2025}
+\end{minipage}
+\end{flushleft}
+
+\vspace{1.5cm}
+\end{titlepage}
+
+% ****************************************************************************************************
+% Half-title page
+% ****************************************************************************************************
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+  {\Large\spacedlowsmallcaps{Para o que não há resposta,\\[2mm]
+   deve-se continuar perguntando}}
+\end{center}
+\vspace*{\fill}
+
+% ****************************************************************************************************
+% Title page (interior)
+% ****************************************************************************************************
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{2cm}
+\begin{center}
+  {\LARGE\spacedlowsmallcaps{Para o que não há resposta,\\[2mm]
+   deve-se continuar perguntando}}\\[1cm]
+  {\large\itshape Sobre Psiquiatria e Ética}\\[2cm]
+  {\Large Gustavo Mendes e Silva, M.D.}\\[3cm]
+  {\large 2025}
+\end{center}
+\vfill
+
+% ****************************************************************************************************
+% Table of Contents
+% ****************************************************************************************************
+\cleardoublepage
+\pagestyle{scrheadings}
+\pagenumbering{roman}
+
+\tableofcontents
+
+% ****************************************************************************************************
+% Main Matter
+% ****************************************************************************************************
+\cleardoublepage
+\mainmatter
+\pagenumbering{arabic}
+
+% ****************************************************************************************************
+% Chapters
+% ****************************************************************************************************
+\include{Chapters/capitulo01}
+\include{Chapters/capitulo02}
+\include{Chapters/capitulo03}
+\include{Chapters/capitulo04}
+\include{Chapters/capitulo05}
+\include{Chapters/capitulo06}
+\include{Chapters/capitulo07}
+\include{Chapters/capitulo08}
+\include{Chapters/capitulo09}
+
+% ****************************************************************************************************
+% Back Matter
+% ****************************************************************************************************
+\backmatter
+
+% Colophon
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+  \small
+  \textit{Este livro foi composto em \LaTeX}\\
+  \textit{utilizando o template ClassicThesis}\\[5mm]
+  \textit{Tipografia: Linux Libertine}\\[5mm]
+  \textit{2025}
+\end{center}
+\vfill
 
 \end{document}
