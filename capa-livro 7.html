@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para o que não há resposta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      padding: 40px;
+    }
+
+    .cover {
+      width: 420px;
+      height: 630px;
+      background: #f2f0eb;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Grande bloco de cor */
+    .color-block {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 58%;
+      background: #1a1a1a;
+    }
+
+    /* Conteúdo */
+    .content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 44px 40px;
+    }
+
+    /* Título - quebrado em duas partes */
+    .title-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: 60px;
+    }
+
+    .title-line-1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .title-line-2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 38px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.15;
+      color: #f2f0eb;
+      margin-left: -2px;
+    }
+
+    /* Área inferior - sobre o fundo claro */
+    .bottom-area {
+      padding-top: 24px;
+    }
+
+    .subtitle {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      font-style: italic;
+      color: #1a1a1a;
+      margin-bottom: 32px;
+      opacity: 0.7;
+    }
+
+    .author-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .author {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #1a1a1a;
+      letter-spacing: 0.02em;
+    }
+
+    .year {
+      font-family: 'DM Serif Display', serif;
+      font-size: 48px;
+      font-weight: 400;
+      color: #1a1a1a;
+      opacity: 0.08;
+      line-height: 1;
+    }
+
+    /* Detalhe vertical */
+    .vertical-accent {
+      position: absolute;
+      left: 40px;
+      top: 44px;
+      bottom: 44px;
+      width: 3px;
+      background: linear-gradient(to bottom, 
+        rgba(255,255,255,0.3) 0%, 
+        rgba(255,255,255,0.3) 50%, 
+        rgba(26,26,26,0.1) 50%, 
+        rgba(26,26,26,0.1) 100%
+      );
+    }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="color-block"></div>
+    <div class="vertical-accent"></div>
+    
+    <div class="content">
+      <div class="title-block">
+        <p class="title-line-1">Para o que não há resposta,</p>
+        <h1 class="title-line-2">deve-se continuar<br>perguntando</h1>
+      </div>
+      
+      <div class="bottom-area">
+        <p class="subtitle">Sobre Psiquiatria e Ética</p>
+        
+        <div class="author-block">
+          <p class="author">Gustavo Mendes e Silva, M.D.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
